@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório em Sala de Aula</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .header-red {
+            background-color: #d10000;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+        }
+        .text-box {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 1.5rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+ <!-- script src="components/header.js"></script-->
+    <script src="script.js"></script>
+
+    <script src="header.js"></script>
+    
+    <custom-header></custom-header>
+    
+    <main class="container mx-auto px-4 py-8">
+        <div class="text-box">
+            <h2 class="text-xl font-semibold mb-4 text-red-800">Preparação de Relatórios das Formadoras de Professores da Maple Bear</h2>
+            <p class="text-gray-700">Este sistema permite gerenciar e editar os relatórios das formadoras de professores. Utilize o editor para adicionar, modificar ou organizar o conteúdo.</p>
+            <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                <a href="json-editor.html" class="bg-red-600 text-white px-4 py-3 rounded-lg hover:bg-red-700 text-center font-medium shadow-md transition-all">
+                    Acessar Editor de Relatórios
+                </a>
+                <a href="reports.html" class="bg-blue-600 text-white px-4 py-3 rounded-lg hover:bg-blue-700 text-center font-medium shadow-md transition-all">
+                    Visualizar Relatórios
+                </a>
+            </div>
+        </div>
+    </main>
+   
+
+</body>
+
+<foot>versão 11/12  21:54 new</foot>
+</html>
+
