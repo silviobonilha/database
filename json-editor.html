@@ -276,7 +276,7 @@ alert('Dados importados com sucesso!');
             // Reset file input
             event.target.value = '';
         }
-        // Auto-save every 2 minutes
+        // Auto-save every 1 minutes
         function setupAutoSave() {
             setInterval(() => {
                 if (currentLesson) {
@@ -285,7 +285,7 @@ alert('Dados importados com sucesso!');
                 }
                 // Also save all data to localStorage periodically
                 saveToLocalStorage();
-            }, 120000); // 2 minutes in milliseconds
+            }, 60000); // 1 minutes in milliseconds
         }
 // Initialize when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
