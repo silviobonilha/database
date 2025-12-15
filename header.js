@@ -17,7 +17,6 @@ class CustomHeader extends HTMLElement {
                         <a href="reports.html" class="hover:text-red-200 transition-colors">Relatórios</a>
                     </nav>
                 </div>
-
             </header>
         `;
     }
