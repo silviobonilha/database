@@ -41,7 +41,7 @@ class CustomHeader extends HTMLElement {
             <header>
                 <div class="header-content">
                     <div class="logo">
-                        <img src="https://raw.githubusercontent.com/silviobonilha/database/refs/heads/image/logo.png" alt="logotipo da Maple Bear" class="w-1/3 h-1/3 object-cover">
+                        <img src="https://raw.githubusercontent.com/silviobonilha/database/refs/heads/image/logo-educ.png" alt="logotipo da Maple Bear" class="w-1/3 h-1/3 object-cover">
                         <span>Portal de Relatórios</span>
 </div>
 </div>
