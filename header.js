@@ -5,14 +5,18 @@ class CustomHeader extends HTMLElement {
                 
                 <div class="text-center px-4 py-3">
 
+<!-- img
+  src="https://raw.githubusercontent.com/silviobonilha/database/refs/heads/image/logo-educ.png"
+  alt="logotipo" </span -->  
+
+
 <img
   src="https://raw.githubusercontent.com/silviobonilha/database/refs/heads/image/logo-educ.png"
-  alt="logotipo" </span>  
+  alt="Logotipo Educacional"
+  class="w-8 h-8 mx-auto mb-4"
+/>
 
-                <!-- p>
-                    <span style="font-size: 24px;">
-                        class="w-24 h-auto">    <span> Relatório em Sala de Aula</span>
-                </p -->
+                
 
 <p>
     <span style="font-size: 24px;" class="w-24 h-auto">
