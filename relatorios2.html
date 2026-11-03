@@ -41,9 +41,15 @@
                 </a>
                 
                 <div class="flex items-center gap-3">
-                    <button onclick="limparBaseDeDados()" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-red-600 text-white font-semibold hover:bg-red-700 shadow-sm transition text-sm">
-                        <i class="fa-solid fa-triangle-exclamation"></i> ATENÇÃO: Limpar Base de Dados
-                    </button>
+                    
+                    <!-- button onclick="limparBaseDeDados()" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-red-600 text-white font-semibold hover:bg-red-700 shadow-sm transition text-sm">
+                        <i class="fa-solid fa-triangle-exclamation"></i> CUIDADO: Limpar Base de Dados
+                </button -->
+
+<!--INSERT -->
+<button onclick="limparBaseDeDados()" title="Cuidado ao clicar este botão toda base de dados será DELETADA" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-red-600 text-white font-semibold hover:bg-red-700 shadow-sm transition text-sm">
+    <i class="fa-solid fa-triangle-exclamation"></i> CUIDADO: Limpar Base de Dados
+</button>
                     
                     <button onclick="carregarListaRelatorios()" class="text-sm text-red-700 hover:text-red-900 font-semibold flex items-center gap-1 px-3 py-2 bg-red-50 rounded-lg border border-red-200 transition">
                         <i class="fa-solid fa-rotate"></i> Atualizar
@@ -173,7 +179,7 @@
 
         // Função para limpar toda a base de dados de relatórios com duplo aviso de segurança
         function limparBaseDeDados() {
-            const confirmacao1 = confirm("ATENÇÃO: Você está prestes a apagar TODOS os relatórios armazenados na base de dados. Deseja continuar?");
+            const confirmacao1 = confirm("CUIDADO: Você está prestes a apagar TODOS os relatórios armazenados na base de dados. Deseja continuar?");
             if (!confirmacao1) return;
 
             const confirmacao2 = prompt('Para confirmar a exclusão total, digite "APAGAR" em letras maiúsculas:');
@@ -199,6 +205,8 @@
 
         document.addEventListener('DOMContentLoaded', carregarListaRelatorios);
     </script>
-
+<footer>
+    versão 03/11/2026 18:58 
+</footer>
 </body>
 </html>
