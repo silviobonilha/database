@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatórios Armazenados - Maple Bear</title>
+    <!-- Tailwind CSS CDN para estilização moderna e limpa -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8fafc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body class="py-10 px-4 sm:px-6 lg:px-8">
+
+    <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+        
+        <!-- Cabeçalho na cor vermelha -->
+        <div class="bg-red-700 text-white py-6 px-8 flex items-center justify-between">
+            <div>
+                <h1 class="text-3xl font-bold tracking-wide flex items-center gap-3">
+                    <i class="fa-solid fa-folder-open"></i> Relatórios
+                </h1>
+                <p class="text-red-100 text-sm mt-1">Índice de Unidades e Registros Armazenados</p>
+            </div>
+            <div class="hidden sm:block text-red-200 text-4xl">
+                <i class="fa-solid fa-list-check"></i>
+            </div>
+        </div>
+
+        <div class="p-8 space-y-6">
+
+            <!-- Barra de Ações Superior (Com o botão de limpar base de dados) -->
+            <div class="flex flex-wrap justify-between items-center gap-3 border-b pb-4">
+                <a href="index2.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gray-200 text-gray-800 font-medium hover:bg-gray-300 transition text-sm">
+                    <i class="fa-solid fa-arrow-left"></i> Voltar à Página Inicial
+                </a>
+                
+                <div class="flex items-center gap-3">
+                    <button onclick="limparBaseDeDados()" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-red-600 text-white font-semibold hover:bg-red-700 shadow-sm transition text-sm">
+                        <i class="fa-solid fa-triangle-exclamation"></i> ATENÇÃO: Limpar Base de Dados
+                    </button>
+                    
+                    <button onclick="carregarListaRelatorios()" class="text-sm text-red-700 hover:text-red-900 font-semibold flex items-center gap-1 px-3 py-2 bg-red-50 rounded-lg border border-red-200 transition">
+                        <i class="fa-solid fa-rotate"></i> Atualizar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Lista / Índice de Relatórios -->
+            <div id="lista-relatorios" class="space-y-4">
+                <!-- Conteúdo gerado dinamicamente via JS -->
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        const anos = [6, 7, 8, 9, 10, 11, 12];
+
+        function carregarListaRelatorios() {
+            const conteiner = document.getElementById('lista-relatorios');
+            conteiner.innerHTML = '';
+
+            const chavesRelatorios = [];
+            for (let i = 0; i < localStorage.length; i++) {
+                const chave = localStorage.key(i);
+                if (chave.startsWith('maple_report_')) {
+                    chavesRelatorios.push(chave);
+                }
+            }
+
+            if (chavesRelatorios.length === 0) {
+                conteiner.innerHTML = `
+                    <div class="text-center py-12 text-gray-500 bg-gray-50 rounded-lg border border-dashed border-gray-300">
+                        <i class="fa-solid fa-inbox text-4xl mb-3 text-gray-400"></i>
+                        <p class="text-base font-medium">Nenhum relatório encontrado na base de dados.</p>
+                        <p class="text-sm mt-1">Preencha um novo relatório na página inicial para salvá-lo aqui.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            chavesRelatorios.forEach((chave, index) => {
+                const dados = JSON.parse(localStorage.getItem(chave));
+                const dataFormatada = dados.data ? new Date(dados.data + 'T00:00:00').toLocaleDateString('pt-BR') : 'Data não informada';
+
+                const itemHTML = `
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-5 shadow-sm hover:border-red-300 transition">
+                        <div class="flex items-center justify-between cursor-pointer select-none" onclick="alternarDetalhes(${index})">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-red-100 text-red-700 flex items-center justify-center font-bold">
+                                    <i class="fa-solid fa-building"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-bold text-gray-800">${dados.unidade}</h3>
+                                    <p class="text-xs text-gray-500 flex items-center gap-1">
+                                        <i class="fa-regular fa-calendar"></i> Data do Relatório: ${dataFormatada}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span id="btn-texto-${index}" class="text-xs font-semibold px-2.5 py-1 bg-red-50 text-red-700 rounded-full border border-red-200 flex items-center gap-1">
+                                    Ver Detalhes <i id="icone-${index}" class="fa-solid fa-chevron-down"></i>
+                                </span>
+                                <button onclick="event.stopPropagation(); excluirRelatorio('${chave}', '${dados.unidade}')" class="text-gray-400 hover:text-red-600 p-2" title="Excluir Relatório">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Detalhes do Relatório Expandíveis -->
+                        <div id="detalhe-${index}" class="hidden mt-4 pt-4 border-t border-gray-200 space-y-3">
+                            ${gerarVisualizacaoAnos(dados.anos)}
+                        </div>
+                    </div>
+                `;
+
+                conteiner.insertAdjacentHTML('beforeend', itemHTML);
+            });
+        }
+
+        function gerarVisualizacaoAnos(dadosAnos) {
+            if (!dadosAnos) return '<p class="text-sm text-gray-500">Sem dados registrados.</p>';
+            
+            let html = '<div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">';
+            anos.forEach(ano => {
+                const obs = dadosAnos[ano]?.observacoes || 'Nenhuma observação informada.';
+                const ev = dadosAnos[ano]?.evidencias || 'Nenhuma evidência informada.';
+                
+                html += `
+                    <div class="bg-white p-3 rounded border border-gray-200 shadow-sm">
+                        <span class="font-bold text-red-700 block border-b pb-1 mb-2">Year ${ano}</span>
+                        <p class="text-gray-700 mb-1"><strong>Obs:</strong> ${obs}</p>
+                        <p class="text-gray-600"><strong>Evidências:</strong> ${ev}</p>
+                    </div>
+                `;
+            });
+            html += '</div>';
+            return html;
+        }
+
+        function alternarDetalhes(index) {
+            const elDetalhe = document.getElementById(`detalhe-${index}`);
+            const icone = document.getElementById(`icone-${index}`);
+            const btnTexto = document.getElementById(`btn-texto-${index}`);
+
+            if (elDetalhe) {
+                const estaOculto = elDetalhe.classList.contains('hidden');
+                if (estaOculto) {
+                    elDetalhe.classList.remove('hidden');
+                    icone.className = "fa-solid fa-chevron-up";
+                    btnTexto.innerHTML = `Ocultar <i id="icone-${index}" class="fa-solid fa-chevron-up ml-1"></i>`;
+                } else {
+                    elDetalhe.classList.add('hidden');
+                    icone.className = "fa-solid fa-chevron-down";
+                    btnTexto.innerHTML = `Ver Detalhes <i id="icone-${index}" class="fa-solid fa-chevron-down ml-1"></i>`;
+                }
+            }
+        }
+
+        function excluirRelatorio(chave, unidade) {
+            if (confirm(`Tem certeza que deseja excluir o relatório da unidade "${unidade}"?`)) {
+                localStorage.removeItem(chave);
+                carregarListaRelatorios();
+            }
+        }
+
+        // Função para limpar toda a base de dados de relatórios com duplo aviso de segurança
+        function limparBaseDeDados() {
+            const confirmacao1 = confirm("ATENÇÃO: Você está prestes a apagar TODOS os relatórios armazenados na base de dados. Deseja continuar?");
+            if (!confirmacao1) return;
+
+            const confirmacao2 = prompt('Para confirmar a exclusão total, digite "APAGAR" em letras maiúsculas:');
+            if (confirmacao2 !== "APAGAR") {
+                alert("Operação cancelada. A base de dados não foi alterada.");
+                return;
+            }
+
+            // Remove apenas as chaves referentes aos relatórios da Maple Bear para não afetar outras configurações do navegador
+            const chavesParaRemover = [];
+            for (let i = 0; i < localStorage.length; i++) {
+                const chave = localStorage.key(i);
+                if (chave.startsWith('maple_report_')) {
+                    chavesParaRemover.push(chave);
+                }
+            }
+
+            chavesParaRemover.forEach(chave => localStorage.removeItem(chave));
+
+            alert("Base de dados limpa com sucesso!");
+            carregarListaRelatorios();
+        }
+
+        document.addEventListener('DOMContentLoaded', carregarListaRelatorios);
+    </script>
+
+</body>
+</html>
