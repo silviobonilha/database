@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planilha para cálculo dos serviços do mês - Maple Bear 2027</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: #1f2937;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            border-top: 6px solid #b71c1c;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            color: #b71c1c;
+            text-align: center;
+            font-size: 24px;
+            margin-top: 0;
+            margin-bottom: 25px;
+        }
+
+        /* Bloco de Acesso à Planilha gmail */
+        .sheets-box {
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 8px;
+            padding: 25px 20px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .sheets-box p {
+            margin-top: 0;
+            margin-bottom: 18px;
+            font-size: 15px;
+            color: #166534;
+            font-weight: bold;
+        }
+
+        .btn-sheets {
+            display: inline-block;
+            background-color: #16a34a;
+            color: #ffffff !important;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 14px 28px;
+            border-radius: 6px;
+            box-shadow: 0 3px 6px rgba(22, 163, 74, 0.25);
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .btn-sheets:hover {
+            background-color: #15803d;
+        }
+
+        .btn-sheets:active {
+            transform: scale(0.98);
+        }
+
+        .sheets-url-hint {
+            display: block;
+            margin-top: 12px;
+            font-size: 12px;
+            color: #4b5563;
+            word-break: break-all;
+        }
+
+        /* Bloco de E-mails */
+        .email-block {
+            background-color: #f9fafb;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            padding: 18px 20px;
+            margin-top: 10px;
+        }
+
+        .email-block h2 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            font-size: 16px;
+            color: #1f2937;
+            border-bottom: 1px solid #d1d5db;
+            padding-bottom: 8px;
+        }
+
+        .email-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 6px;
+            border-bottom: 1px solid #e5e7eb;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .email-row:last-child {
+            border-bottom: none;
+        }
+
+        .email-address {
+            font-weight: bold;
+            color: #1f2937;
+            font-size: 14px;
+        }
+
+        .email-links {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-gmail {
+            background-color: #dc2626;
+            color: #ffffff !important;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .btn-gmail:hover {
+            background-color: #b91c1c;
+        }
+
+        .btn-mailto {
+            background-color: #2563eb;
+            color: #ffffff !important;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .btn-mailto:hover {
+            background-color: #1d4ed8;
+        }
+
+        footer {
+            margin-top: 25px;
+            text-align: center;
+            font-size: 13px;
+            color: #6b7280;
+            border-top: 1px solid #e5e7eb;
+            padding-top: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Planilha para cálculo dos serviços do mês - Maple Bear 2027</h1>
+
+    <!-- Botão de acesso ao gmail Planilhas -->
+    <div class="sheets-box">
+        <p>Acesse a planilha online para preencher as datas, unidades e calcular os valores:</p>
+        <a class="btn-sheets" href="https://docs.gmail.com/spreadsheets/d/1FwiT8J8DIGZMSQ-xks1yaN_k192VOFYuKDGBNc7TY84/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+            📊 Abrir Planilha gmail (Maple Bear)
+        </a>
+        <span class="sheets-url-hint">Planilha_Calculo_MapleBear</span>
+    </div>
+
+    <!-- Bloco de E-mails -->
+    <div class="email-block">
+        <h2> <center>Contatos para envio e-mails <br />(<a href="file:///home/bonilha/Documentos/Eloisa/Acesso%20-%20Nova%20Emiss%C3%A3o%20NF/email_list.txt" target="_blank" rel="noopener noreferrer">clique aqui para abrir lista)</a></center></h2>
+
+        <div class="email-row">
+            <span class="email-address">1. andrepo.silva@mbcentral.com.br</span>
+            <div class="email-links">
+                <!-- <a href="https://gmail.com" target="_blank" rel="noopener noreferrer">Abrir Gmail Web</a>
+                <a class="btn-mailto" href="mailto:andrepo.silva@mbcentral.com.br?subject=Planilha%20de%20Servi%C3%A7os%20do%20M%C3%AAs%20-%20Maple%20Bear">App de -->
+            </div>
+        </div>
+
+        <div class="email-row">
+            <span class="email-address">2. karen.schmidt@mbcentral.com.br</span>
+            <div class="email-links">
+                <!-- href="https://gmail.com" target="_blank" rel="noopener noreferrer">Abrir Gmail Web</a>
+                <a class="btn-mailto" href="mailto:karen.schmidt@mbcentral.com.br?subject=Planilha%20de%20Servi%C3%A7os%20do%20M%C3%AAs%20-%20Maple%20Bear">App de -->
+            </div>
+        </div>
+
+        <div class="email-row">
+            <span class="email-address">3. lucineiac.ogando@mbcentral.com.br</span>
+            <div class="email-links">
+                <!-- href="https://gmail.com" target="_blank" rel="noopener noreferrer">Abrir Gmail Web</a>
+                <a class="btn-mailto" href="mailto:lucineiac.ogando@mbcentral.com.br?subject=Planilha%20de%20Servi%C3%A7os%20do%20M%C3%AAs%20-%20Maple%20Bear">App de -->
+            </div>
+        </div>
+
+        <div class="email-row">
+            <span class="email-address">4. bmfiloinfo@gmail.com</span>
+            <div class="email-links">
+                <!-- href="https://gmail.com" target="_blank" rel="noopener noreferrer">Abrir Gmail Web</a>
+                <a class="btn-mailto" href="mailto:bmfiloinfo@://gmail.com">App de -->
+            </div>
+        </div>
+
+        <div class="email-row">
+            <span class="email-address">5. elogalesso@gmail.com</span>
+            <div class="email-links">
+                <!-- href="https://gmail.com" target="_blank" rel="noopener noreferrer">Abrir Gmail Web</a>
+                <a class="btn-mailto" href="mailto:elogalesso@://gmail.com">App de -->
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        by bonilha - vertion 17/11
+    </footer>
+</div>
+
+</body>
+</html>
+
