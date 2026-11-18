@@ -20,7 +20,7 @@ class CustomHeader extends HTMLElement {
 
 <p>
     <span style="font-size: 24px;" class="w-24 h-auto">
-        Relatório em Sala de Aula
+        Relatório em Sala de Aula e Cálculo NF
     </span>
 </p>
 
@@ -31,6 +31,7 @@ class CustomHeader extends HTMLElement {
                         <a href="index.html" class="hover:text-red-200 transition-colors">Início</a>
                         <a href="json-editor.html" class="hover:text-red-200 transition-colors">Editor</a>
                         <a href="reports.html" class="hover:text-red-200 transition-colors">Relatórios</a>
+                        <a href="index_nf.html" class="hover:text-red-200 transition-colors">Cálculo NF</a>
                     </nav>
                 </div>
             </header>
